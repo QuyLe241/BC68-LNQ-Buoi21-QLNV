@@ -194,7 +194,7 @@ XoaNhanVien = (idButton) => {
     })
 }
 
-//      Tìm NV theo tên
+//      Tìm NV theo tên 
 document.getElementById("searchName").addEventListener("click", () => {
     let tukhoa = document.getElementById("searchName").value;
     let dskq = congty.TimNhanVienTheoTen(tukhoa);
