@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="css/jquery-ui.min.css" />
 
     <!-- Animate -->
-    <link rel="stylesheet" href="css/animate.css" />
+    <!-- <link rel="stylesheet" href="css/animate.css" /> -->
 
     <!-- My CSS -->
     <link rel="stylesheet" href="css/modal.css" />
@@ -173,10 +173,12 @@
                   </div>
                 </div>
               </div>
-              <table class="table table-bordered table-hover myTable">
+              <table class="table">
+                <!-- thuôc tính tình thêm thẻ table -->
+                <!-- table-bordered table-hover myTable -->
                 <thead class="text-primary">
                   <tr>
-                    <th class="nowrap">
+                    <th class="nowrap1">
                       <span class="mr-1">Tài khoản</span>
                       <i class="fa fa-arrow-up" id="SapXepTang"></i>
                       <i class="fa fa-arrow-down" id="SapXepGiam"></i>
@@ -190,8 +192,10 @@
                     <th><em class="fa fa-cog"></em></th>
                   </tr>
                 </thead>
-                <tbody id="tableDanhSach"></tbody>
+                <!-- tbidy hiện thị -->
+                <tbody id="tableDanhSachTest"></tbody>
               </table>
+              <!-- tbody -->
             </div>
 
             <!-- Footer -->
@@ -206,6 +210,24 @@
           </div>
         </div>
       </div>
+    </div>
+    <!-- test inner -->
+    <div class="testInner">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Mã Sinh Viên</th>
+            <th>Tên Sinh Viên</th>
+            <th>Email</th>
+            <th>Ngày Sinh</th>
+            <th>Khóa Học</th>
+            <th>Điểm Trung Bình</th>
+            <th>Xếp Loại</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tableDanhSach"></tbody>
+      </table>
     </div>
 
     <!-- The Modal -->
@@ -224,7 +246,7 @@
 
           <!-- Modal body -->
           <div class="modal-body">
-            <form role="form">
+            <form role="form" id="formQLNV">
               <div class="form-group">
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -289,8 +311,8 @@
                     ></span>
                   </div>
                   <input
-                    type="password"
-                    name="password"
+                    type="text"
+                    name="text"
                     id="password"
                     class="form-control input-sm"
                     placeholder="Mật khẩu"
@@ -369,15 +391,78 @@
                 </div>
                 <span class="sp-thongbao" id="tbGiolam"></span>
               </div>
+              <!-- btn -->
+              <!-- <div class="modal-footer" id="modal-footer">
+                <button
+                  id="btnThemNV"
+                  type="submit"
+                  onclick=""
+                  class="btn btn-success"
+                >
+                  Thêm người dùng
+                </button>
+                <button
+                  id="btnCapNhatNV"
+                  type="button"
+                  onclick=""
+                  class="btn btn-success"
+                >
+                  Cập nhật
+                </button>
+                <button
+                  id="btnDong"
+                  type="button"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  Đóng
+                </button>
+              </div> -->
+              <div class="modal-footer" id="modal-footer">
+                <button
+                  id="btnThemNV"
+                  type="submit"
+                  onclick=""
+                  class="btn btn-success"
+                >
+                  Thêm người dùng
+                </button>
+                <button
+                  id="btnCapNhatNV"
+                  type="button"
+                  onclick=""
+                  class="btn btn-success"
+                >
+                  Cập nhật
+                </button>
+                <button
+                  id="btnDong"
+                  type="button"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  Đóng
+                </button>
+              </div>
             </form>
           </div>
 
           <!-- Modal footer -->
-          <div class="modal-footer" id="modal-footer">
-            <button id="btnThemNV" type="button" class="btn btn-success">
+          <!-- <div class="modal-footer" id="modal-footer">
+            <button
+              id="btnThemNV"
+              type="submit"
+              onclick=""
+              class="btn btn-success"
+            >
               Thêm người dùng
             </button>
-            <button id="btnCapNhatNV" type="button" class="btn btn-success">
+            <button
+              id="btnCapNhatNV"
+              type="button"
+              onclick=""
+              class="btn btn-success"
+            >
               Cập nhật
             </button>
             <button
@@ -388,7 +473,7 @@
             >
               Đóng
             </button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -426,9 +511,9 @@
     <script src="./js/NhanVien.js"></script>
     <!-- index -->
     <script src="./js/index.js"></script>
-    <!-- Nhân viên -->
-    <script src="./js/staff.js"></script>
-    <!-- Công ty -->
-    <script src="./js/company.js"></script>
+    <!-- Nhân viên test-->
+    <!-- <script src="./js/staff.js"></script> -->
+    <!-- Công ty test-->
+    <!-- <script src="./js/company.js"></script> -->
   </body>
 </html>

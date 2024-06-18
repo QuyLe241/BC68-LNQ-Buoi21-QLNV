@@ -1,6 +1,6 @@
 //          NhanVien
 
-class NhanVien {
+class NhanVienTest {
     constructor (maNV, hoTen, email, matKhau, ngayLamViec, chucVu) {
         this.maNV = maNV;
         this.hoTen = hoTen;

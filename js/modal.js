@@ -14,15 +14,15 @@ function hide() {
 
 var pwShown = 0;
 
-document.getElementById("eye").addEventListener("click", function () {
-    if (pwShown == 0) {
-        pwShown = 1;
-        show();
-    } else {
-        pwShown = 0;
-        hide();
-    }
-}, false);
+// document.getElementById("eye").addEventListener("click", function () {
+//     if (pwShown == 0) {
+//         pwShown = 1;
+//         show();
+//     } else {
+//         pwShown = 0;
+//         hide();
+//     }
+// }, false);
 
 //   font-family: 'Vibur', cursive;
 //   font-family: 'Abel', sans-serif;
