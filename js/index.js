@@ -65,6 +65,7 @@ function renderArrNhanVien () {
             <td>
             <button onclick="deleteNhanVien('${tknv}')" class="btn btn-danger">Xoá</button>
             <button
+                    onclick="getInforNhanVien('${tknv}')"
                     class="btn btn-warning"
                     id="btnThem"
                     data-toggle="modal"
@@ -152,5 +153,33 @@ function deleteNhanVien (tknv) {
 
     };
 
-
 }  
+
+
+//  Lấy thông tin NV
+//      Gắn vào btn-Sua
+function getInforNhanVien (tknv) {
+    //  tìm tới tknv , duyệt mảng arrNhanVien tìm tới phần tử và lấy thông tin
+    //  sư dụng Find để lấy phần tử trong mảng
+    let nhanVien = arrNhanVien.find((item,index) => {
+        return item.tknv == tknv;
+    });
+
+    if (nhanVien) {
+        //  Xử lý đưa dũ liệu nhân viên lên giao diện
+        let arrField  = document.querySelectorAll("#formQLNV input,#formQLNV select");
+        console.log(arrField);
+        for ( let field of arrField) {
+            //  field đại diện cho từng input và select có trong mảng
+            let id = field.id;
+            field.value = nhanVien[id];
+        }
+        //  Chặn người dùng chỉnh sửa tknv
+        document.getElementById("tknv").readOnly = true;
+    }
+
+    // renderArrNhanVien();
+
+}
+
+
