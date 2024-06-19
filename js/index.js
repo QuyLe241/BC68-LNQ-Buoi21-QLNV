@@ -53,7 +53,7 @@ function renderArrNhanVien () {
             <td>${email}</td>
             <td>${datepicker}</td>
             <td>${chucvu}</td>
-            <td></td>
+            <td>${nhanVien.tongLuong()}</td>
             <td></td>
             <td>
             <button onclick="" class="btn btn-danger">Xoá</button>

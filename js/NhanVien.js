@@ -13,7 +13,7 @@ class NhanVien {
 
     //  method Tính lương tổng và xếp loại
 
-    // tongluong
+    // tongluong 
     tongLuong = function() {
         if (this.chucvu == "Sếp") {
             return this.luongCB * 3;
