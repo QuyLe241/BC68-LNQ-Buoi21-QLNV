@@ -42,5 +42,8 @@ class NhanVien {
         if (this.gioLam >= 192) {
             return "Xuất Sắc";
         };
+        //  if(this.gioLam < 0) {
+        //     alert("Vui lòng chọn giờ phù hợp");
+        // };
     };
 }

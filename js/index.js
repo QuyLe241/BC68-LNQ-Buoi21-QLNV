@@ -24,7 +24,14 @@ document.getElementById("formQLNV").onsubmit = function (event) {
 
     // thêm nhân viên vào arr
     arrNhanVien.push(nhanVien);
+
+    //  gọi tới hàm để hiển thị
     renderArrNhanVien();
+
+    //Gọi tới localStorage để lưu dữ liệu
+    saveLocalStorage(); 
+
+
     // xóa dữ liệu sau khi người dùng nhập dữ liệu xong
     document.getElementById("formQLNV").reset();
     console.log(arrNhanVien);
@@ -56,7 +63,7 @@ function renderArrNhanVien () {
             <td>${nhanVien.tongLuong()}</td>
             <td>${nhanVien.xepLoai()}</td>
             <td>
-            <button onclick="" class="btn btn-danger">Xoá</button>
+            <button onclick="deleteNhanVien('${tknv}')" class="btn btn-danger">Xoá</button>
             <button
                     class="btn btn-warning"
                     id="btnThem"
@@ -78,8 +85,72 @@ function renderArrNhanVien () {
     document.getElementById("tableDanhSach").innerHTML = content;
 }
 renderArrNhanVien();
+
+//  gọi tới hàm lấy dữ liệu từ localStorage
+// getLocalStorage();
+
+
+
+//                  TEST
 // document.getElementById("tableDanhSach").innerHTML = content;
 // document.getElementById("tableDanhSach").innerHTML = "11111qeqeqeqeq111111111111";
     // document.getElementById("btnThemNV").onclick = function () {
     //     document.getElementById("tableDanhSach").innerHTML = "11111qeqeqeqeq111111111111";
     // }
+
+
+    //      Lưu trữ lên local storage
+    //  JSON.stringify : dùng để chuyển đổi dữ liệu từ object sang chuỗi để lưu lên local storage
+    //  JSON.parse : dùng để chuyển dữ liệu từ chuổi sang object và in ra giao diên
+        //  sử dụng local storage
+        // localStorage.setItem  : thêm dữ liệu vào localStorage
+        // localStorage.getItem  : lấy dữ liệu từ localStorage
+        // localStorage.removeItem  : xóa dữ liệu từ localStorage
+
+//  Lưu trữ dữ liệu xuống localStorage
+function saveLocalStorage (key="arrNhanVien", value="arrNhanVien") {
+    // Lấy trữ từ mang sang chuổi để lưu trữ
+    // Đi đến sự kiện onsubmit để gọi function này
+    let stringJson = JSON.stringify(value);
+    localStorage.setItem(key, stringJson);
+}
+
+function getLocalStorage (key="arrNhanVien") {
+    //  đi đến renderArrNhanVien để gọi và hiển thị
+
+    // chuyển dữ liệu từ localStorage sang mảng để hiển thị
+    let arrLocal = localStorage.getItem(key);
+    // Sử dụng :  truethy và falsy
+    //          Nếu arrLocal đúng là chuỗi thì parse và ko phải là chuỗi thì trả về rỗng. tránh trường hợp null dẫn đến sai dữ liệu
+    // arrNhanVien = arrLocal ? JSON.parse(arrLocal) : [];  Hoặc
+    if (arrLocal) {
+        arrNhanVien = JSON.parse(arrLocal);
+        // gọi đến hàm render
+        renderArrNhanVien();
+    }
+}
+
+
+//      Chức năng xóa
+function deleteNhanVien (tknv) {
+    //      Tạo sự kiệ onclick tại nút button ở function render
+    console.log(tknv);
+    // tìm vị trí của nhân viên đang cần xóa trong mảng
+    //  Thực hiện cấc phương thúc xóa của măng
+    //      Sử dụng findIndex
+    let index = arrNhanVien.findIndex((item,index) => {
+        return item.tknv == tknv;
+    });
+    console.log(index);
+
+    //  Xóa , nếu vị trí index != -1
+    if (index != -1) {
+        arrNhanVien.splice(index,1);
+
+    // gọi đến render và saveLocal
+    renderArrNhanVien();
+
+    };
+
+
+}  
