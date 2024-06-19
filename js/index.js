@@ -2,11 +2,32 @@
 //      Chứa tất cả các thuộc tính object NhanVien
 let arrNhanVien = [];
 
+//      Lấy dữu liệu từ form
+function getValueForm () {
+    let arrField = document.querySelectorAll("#formQLNV input,#formQLNV select");
+    let nhanVien = new NhanVien();
+
+    // 
+    for (let field of arrField) {
+        // console.log(field);
+
+        //      Lấy dữ liệu từ id và thêm vào arrnhanVien
+        let {value, id} = field;
+        nhanVien[id] = value;
+    }
+    return NhanVien;
+}
+
 //  Thêm nhân viên
 //  Tạo sự kiện onsubmit tại => button thêm người dùng
 //  Lưu ý : type = submit , tạo sự kiện onclick ="" tại HTML
 document.getElementById("formQLNV").onsubmit = function (event) {
     event.preventDefault(); //ngăn trang web reload khi thay đổi dữ liệu
+    //      Lấy dữ liệu từ getValueForm
+    // let nhanVien = getValueForm();
+
+
+    //              Lấy dữ liệu theo cách thườn
     let arrField = document.querySelectorAll("#formQLNV input,#formQLNV select");        // DOM tới dữ liệu input và select
     // console.log(arrField);
 
@@ -168,7 +189,7 @@ function getInforNhanVien (tknv) {
     if (nhanVien) {
         //  Xử lý đưa dũ liệu nhân viên lên giao diện
         let arrField  = document.querySelectorAll("#formQLNV input,#formQLNV select");
-        console.log(arrField);
+        // console.log(arrField);
         for ( let field of arrField) {
             //  field đại diện cho từng input và select có trong mảng
             let id = field.id;
@@ -181,5 +202,32 @@ function getInforNhanVien (tknv) {
     // renderArrNhanVien();
 
 }
+
+
+//      Cập nhật NV
+function updateNhanVien () {
+    console.log("update");
+    // Lấy dữ liệu đã được sửa từ dùng
+    //      Gọi tới hàm lấy dữ liệu để sử dụng
+    let nhanVien = getValueForm();
+    
+    // Tìm kím vị trí của từng phần tử trong mảng
+    index = arrNhanVien.find((item,index) => {
+        return item.tknv == nhanVien.tknv;
+    });
+
+    if(index != -1) {
+        arrNhanVien[index] = nhanVien;
+        renderArrNhanVien();    
+    }
+
+    // Cập nhật lại dữ liệu
+
+
+
+}
+
+// DOM tới btn-update
+document.getElementById("btnCapNhatNV").onclick = updateNhanVien;
 
 
