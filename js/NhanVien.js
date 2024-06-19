@@ -24,21 +24,23 @@ class NhanVien {
         if (this.chucvu == "Nhân viên") {
             return this.luongCB * 1;
         };
+        // 
+        
     };
 
     // Xếp loại
     xepLoai = function() {
         if (this.gioLam >= 0 && this.gioLam < 160) {
-            xepLoai = "Trung Bình";
+            return "Trung Bình";
         };
         if (this.gioLam >= 160) {
-            xepLoai = "Khá";
+            return "Khá";
         };
         if (this.gioLam >= 176) {
-            xepLoai = "Giỏi";
+            return "Giỏi";
         };
         if (this.gioLam >= 192) {
-            xepLoai = "Xuất Sắc";
+            return "Xuất Sắc";
         };
     };
 }
