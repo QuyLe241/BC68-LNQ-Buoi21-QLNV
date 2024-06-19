@@ -253,9 +253,9 @@
               <div class="form-group">
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"
-                      ><i class="fa fa-user"></i
-                    ></span>
+                    <span class="input-group-text">
+                      <i class="fa fa-user"></i>
+                    </span>
                   </div>
                   <input
                     type="text"
@@ -264,6 +264,7 @@
                     class="form-control input-sm"
                     placeholder="Tài khoản"
                   />
+                  <!-- <span class="sp-thongbao text-danger" id="tbTKNV"></span> -->
                 </div>
 
                 <span class="sp-thongbao" id="tbTKNV"></span>
@@ -368,10 +369,10 @@
                     ></span>
                   </div>
                   <select class="form-control" id="chucvu">
-                    <option>Chọn chức vụ</option>
-                    <option>Sếp</option>
-                    <option>Trưởng phòng</option>
-                    <option>Nhân viên</option>
+                    <option value="">Chọn chức vụ</option>
+                    <option value="Sếp">Sếp</option>
+                    <option value="Trưởng phòng">Trưởng phòng</option>
+                    <option value="Nhân viên">Nhân viên</option>
                   </select>
                 </div>
 
@@ -510,6 +511,10 @@
         });
       });
     </script>
+    <!-- ulitl  search -->
+    <script src="./util/util.js"></script>
+    <!-- validation -->
+    <script src="./validation/validation.js"></script>
     <!-- Nhân viên -->
     <script src="./js/NhanVien.js"></script>
     <!-- index -->

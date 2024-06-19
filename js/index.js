@@ -14,6 +14,15 @@ function getValueForm () {
         //      Lấy dữ liệu từ id và thêm vào arrnhanVien
         let {value, id} = field;
         nhanVien[id] = value;
+
+        //      Xử lý validation
+        //  Xử dụng thẻ cha chứa input để DOM và hiện thông báo
+        //      Bằng parentElement
+        //      field là từng input đang có
+        let parent = field.parentElement; 
+        let errorField = parent.querySelector("span");
+        // console.log(errorField);
+        let check = checkEmptyValue(value, errorField);
     }
     return nhanVien;
 }
@@ -24,30 +33,40 @@ function getValueForm () {
 document.getElementById("formQLNV").onsubmit = function (event) {
     event.preventDefault(); //ngăn trang web reload khi thay đổi dữ liệu
     //      Lấy dữ liệu từ getValueForm
-    // let nhanVien = getValueForm();
+    let nhanVien = getValueForm();
 
 
     //              Lấy dữ liệu theo cách thườn
-    let arrField = document.querySelectorAll("#formQLNV input,#formQLNV select");        // DOM tới dữ liệu input và select
-    // console.log(arrField);
+    // let arrField = document.querySelectorAll("#formQLNV input,#formQLNV select");        // DOM tới dữ liệu input và select
+    // // console.log(arrField);
 
-    let nhanVien = new NhanVien();
-    // console.log(nhanVien);
+    // let nhanVien = new NhanVien();
+    // // console.log(nhanVien);
 
-    //  vòng lặp for of để xử lý và lấy dữ liệu
-    for (let field of arrField) {
-        // console.log(field);
+    // //  vòng lặp for of để xử lý và lấy dữ liệu
+    // for (let field of arrField) {
+    //     // console.log(field);
 
-        //      Lấy dữ liệu từ id và thêm vào arrnhanVien
-        let {value, id} = field;
-        nhanVien[id] = value;
-    }
+    //     //      Lấy dữ liệu từ id và thêm vào arrnhanVien
+    //     let {value, id} = field;
+    //     nhanVien[id] = value;
+    // }
+
+    // //  validation
+    //     let parent = field.parentElement; 
+    //     let errorField = parent.querySelector("span");
+    //     // console.log(errorField);
+    //     let check = checkEmptyValue(value, errorField);
 
     // thêm nhân viên vào arr
     arrNhanVien.push(nhanVien);
 
     //  gọi tới hàm để hiển thị
     renderArrNhanVien();
+
+    //      Thông báo thêm thành công
+    // alert("Thêm Thành Công");
+
 
     //Gọi tới localStorage để lưu dữ liệu
     saveLocalStorage(); 
@@ -61,10 +80,10 @@ document.getElementById("formQLNV").onsubmit = function (event) {
 
 //      Hiển thị nội dung lên giao diện
 // let content = ""; 
-function renderArrNhanVien () {
+function renderArrNhanVien (arr = arrNhanVien) {
     // Tạo vòng lặp duyệt NV trong mảng For of
     let content = "";       // chứa các giá trị hiển thị ra thẻ html
-    for (let nhanVien of arrNhanVien){
+    for (let nhanVien of arr){
         // let newArrNhanVien = new nhanVien();
         // Object.assign(newArrNhanVien,nhanVien);
         // destructuring
@@ -106,10 +125,12 @@ function renderArrNhanVien () {
     // }
     document.getElementById("tableDanhSach").innerHTML = content;
 }
+
+//  lưu ý
 renderArrNhanVien();
 
 //  gọi tới hàm lấy dữ liệu từ localStorage
-// getLocalStorage();
+// getLocalStorage(); 
 
 
 
@@ -235,7 +256,8 @@ function updateNhanVien () {
     if(index != -1) {
         arrNhanVien[index] = nhanVien;
         console.log(arrNhanVien);
-        renderArrNhanVien();         
+        renderArrNhanVien(); 
+        alert("Cập nhật thành công");        
     };
 
     // Cập nhật lại dữ liệu
@@ -247,6 +269,74 @@ function updateNhanVien () {
 }
 
 // DOM tới btn-update
+//          hàm updateNhanVien không có () Vì hàm chỉ chạy khi người dùng bấm click
+//      Để truyền tham số vào ()  Thì
+//      document.getElementById("btnCapNhatNV").onclick = function (){
+//          updateNhanVien(Tham số);
+//      };
+//      
 document.getElementById("btnCapNhatNV").onclick = updateNhanVien;
+
+
+//          Chức năng tìm kíêm - search
+//      Sử dụng onInput
+function searchNhanVien (event) {
+//      convert dữ liệu
+//      - chuyển dữ liệu cần lọc thành chữ thường : toLowerCase
+//      - Loại bỏ tất cả dấu tiếng việt
+//      - Loại bỏ khoảng cách: trim
+
+    let newKeyWord = removeVietnameseTones (
+        event.target.value.toLowerCase().trim()
+    );
+    console.log(newKeyWord);
+
+    //      Loc
+    //      filter hoạt động hàm sẽ lọc và trả về arrNhanVienFilter
+    //          Lọc theo tên
+    let arrNhanVienFilter = arrNhanVien.filter((item,index) => {
+        //      Kiểm tra keyword có đươc chứ trong tknv Nhân viên hay không
+        let newTenNhanVien = removeVietnameseTones(
+            item.tknv.toLowerCase().trim()
+        );
+
+        //      includes để kiểm tra 
+        //      nam =>  n , na ,...
+        return newTenNhanVien.includes(newKeyWord); 
+    });
+
+    //  Lọc theo TK
+    let arrNhanVienFilterTK = arrNhanVien.filter((item,index) => {
+        //      Kiểm tra keyword có đươc chứ trong tknv Nhân viên hay không
+        let newTenNhanVien = removeVietnameseTones(
+            item.name.toLowerCase().trim()
+        );
+
+        //      includes để kiểm tra 
+        //      nam =>  n , na ,...
+        return newTenNhanVien.includes(newKeyWord); 
+    });
+
+    // 
+    let arrNhanVienFilterXL = arrNhanVien.filter((item,index) => {
+        //      Kiểm tra keyword có đươc chứ trong tknv Nhân viên hay không
+        // let xl = xepLoai();
+        let newTenNhanVien = removeVietnameseTones(
+            item.xepLoai().toLowerCase().trim()
+        );
+
+        //      includes để kiểm tra 
+        //      nam =>  n , na ,...
+        return newTenNhanVien.includes(newKeyWord); 
+    });
+
+
+    //      gọi hàm hiển thị 
+    renderArrNhanVien(arrNhanVienFilter,arrNhanVienFilterTK,arrNhanVienFilterXL);
+
+};
+//      oninput
+document.getElementById("searchName").oninput = searchNhanVien;
+
 
 
