@@ -15,7 +15,7 @@ function getValueForm () {
         let {value, id} = field;
         nhanVien[id] = value;
     }
-    return NhanVien;
+    return nhanVien;
 }
 
 //  Thêm nhân viên
@@ -210,21 +210,40 @@ function updateNhanVien () {
     // Lấy dữ liệu đã được sửa từ dùng
     //      Gọi tới hàm lấy dữ liệu để sử dụng
     let nhanVien = getValueForm();
+
+    //              Lấy dữ liệu theo cách thườn
+    // let arrField = document.querySelectorAll("#formQLNV input,#formQLNV select");        // DOM tới dữ liệu input và select
+    // // console.log(arrField);
+
+    // let nhanVien = new NhanVien();
+    // // console.log(nhanVien);
+
+    // //  vòng lặp for of để xử lý và lấy dữ liệu
+    // for (let field of arrField) {
+    //     // console.log(field);
+
+    //     //      Lấy dữ liệu từ id và thêm vào arrnhanVien
+    //     let {value, id} = field;
+    //     nhanVien[id] = value;
+    // }
     
     // Tìm kím vị trí của từng phần tử trong mảng
-    index = arrNhanVien.find((item,index) => {
+    let index = arrNhanVien.findIndex((item,index) => {
         return item.tknv == nhanVien.tknv;
     });
 
     if(index != -1) {
         arrNhanVien[index] = nhanVien;
-        renderArrNhanVien();    
-    }
+        console.log(arrNhanVien);
+        renderArrNhanVien();         
+    };
 
     // Cập nhật lại dữ liệu
 
-
-
+    // document.getElementById("myModal").style.display = "none";
+    // document.getElementById("myModal").classList.remove("show");
+    // document.getElementsByTagName("body").style.display = "none";
+    // document.getElementsByTagName("body").classList.remove("modal-open");
 }
 
 // DOM tới btn-update
