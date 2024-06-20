@@ -131,7 +131,7 @@ function renderArrNhanVien (arr = arrNhanVien) {
 }
 
 //  lưu ý
-// renderArrNhanVien();
+// renderArrNhanVien(); 
 
 //  gọi tới hàm lấy dữ liệu từ localStorage
 getLocalStorage(); 
@@ -199,7 +199,7 @@ function deleteNhanVien (ftknv) {
         arrNhanVien.splice(index,1);
 
     // gọi đến render và saveLocal
-    renderArrNhanVien();
+    renderArrNhanVien(); 
     // luu y
     saveLocalStorage();
     };
