@@ -138,6 +138,13 @@ getLocalStorage();
 // getLocalStorage();
 
 
+//      Lick thêm nhân viên
+document.getElementById("btnThem").onclick = function() {
+    document.getElementById("formQLNV").reset();
+    document.getElementById("tknv").readOnly = false;
+};
+
+
 // 
 //                  TEST
 // document.getElementById("tableDanhSach").innerHTML = content;
