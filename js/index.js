@@ -308,7 +308,7 @@ function searchNhanVien (event) {
     let arrNhanVienFilter = arrNhanVien.filter((item,index) => {
         //      Kiểm tra keyword có đươc chứ trong tknv Nhân viên hay không
         let newTenNhanVien = removeVietnameseTones(
-            item.tknv.toLowerCase().trim()
+            item.name.toLowerCase().trim()
         );
 
         //      includes để kiểm tra 
@@ -320,7 +320,7 @@ function searchNhanVien (event) {
     let arrNhanVienFilterTK = arrNhanVien.filter((item,index) => {
         //      Kiểm tra keyword có đươc chứ trong tknv Nhân viên hay không
         let newTenNhanVien = removeVietnameseTones(
-            item.name.toLowerCase().trim()
+            item.tknv.toLowerCase().trim()
         );
 
         //      includes để kiểm tra 
@@ -328,26 +328,29 @@ function searchNhanVien (event) {
         return newTenNhanVien.includes(newKeyWord); 
     });
 
-    // 
-    let arrNhanVienFilterXL = arrNhanVien.filter((item,index) => {
-        //      Kiểm tra keyword có đươc chứ trong tknv Nhân viên hay không
-        // let xl = xepLoai();
-        let newTenNhanVien = removeVietnameseTones(
-            item.xepLoai().toLowerCase().trim()
-        );
+    //      Xếp loại
+    // let arrNhanVienFilterXL = arrNhanVien.filter((item,index) => {
+    //     //      Kiểm tra keyword có đươc chứ trong tknv Nhân viên hay không
+    //     // let xl = xepLoai();
+    //     let newTenNhanVien = removeVietnameseTones(
+    //         item.xepLoai().toLowerCase().trim()
+    //     );
 
-        //      includes để kiểm tra 
-        //      nam =>  n , na ,...
-        return newTenNhanVien.includes(newKeyWord); 
-    });
+    //     //      includes để kiểm tra 
+    //     //      nam =>  n , na ,...
+    //     return newTenNhanVien.includes(newKeyWord); 
+    // });
 
 
     //      gọi hàm hiển thị 
-    renderArrNhanVien(arrNhanVienFilter,arrNhanVienFilterTK,arrNhanVienFilterXL);
+    renderArrNhanVien(arrNhanVienFilter);
+    // renderArrNhanVien(arrNhanVienFilter,arrNhanVienFilterTK);
 
-};
+};    
+
 //      oninput
-document.getElementById("searchName").oninput = searchNhanVien;
+document.getElementById("searchName").oninput = searchNhanVien; 
+// document.getElementById("searchName").oninput = searchNhanVien1;
 
 
 

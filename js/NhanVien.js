@@ -33,10 +33,10 @@ class NhanVien {
         if (this.gioLam >= 0 && this.gioLam < 160) {
             return "Trung Bình";
         };
-        if (this.gioLam >= 160) {
+        if (this.gioLam >= 160 && this.gioLam < 176) {
             return "Khá";
         };
-        if (this.gioLam >= 176) {
+        if (this.gioLam >= 176 && this.gioLam < 192) {
             return "Giỏi";
         };
         if (this.gioLam >= 192) {
