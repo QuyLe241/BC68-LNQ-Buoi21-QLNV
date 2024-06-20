@@ -19,10 +19,10 @@ function getValueForm () {
         //  Xử dụng thẻ cha chứa input để DOM và hiện thông báo
         //      Bằng parentElement
         //      field là từng input đang có
-        let parent = field.parentElement; 
-        let errorField = parent.querySelector("span");
-        // console.log(errorField);
-        let check = checkEmptyValue(value, errorField);
+        // let parent = field.parentElement; 
+        // let errorField = parent.querySelector("span");
+        // // console.log(errorField);
+        // let check = checkEmptyValue(value, errorField);
     }
     return nhanVien;
 }
@@ -74,8 +74,11 @@ document.getElementById("formQLNV").onsubmit = function (event) {
 
     // xóa dữ liệu sau khi người dùng nhập dữ liệu xong
     document.getElementById("formQLNV").reset();
+
+    // getValueForm().reset();
     console.log(arrNhanVien);
     // document.getElementById("tableDanhSach").innerHTML = "11111";
+
 }
 
 //      Hiển thị nội dung lên giao diện
@@ -84,12 +87,12 @@ function renderArrNhanVien (arr = arrNhanVien) {
     // Tạo vòng lặp duyệt NV trong mảng For of
     let content = "";       // chứa các giá trị hiển thị ra thẻ html
     for (let nhanVien of arr){
-        // let newArrNhanVien = new nhanVien();
-        // Object.assign(newArrNhanVien,nhanVien);
+        let newArrNhanVien = new NhanVien();
+        Object.assign(newArrNhanVien,nhanVien);
         // destructuring
         // lấy dữ liệu từ nhanVien
 
-        let {tknv, name, email, datepicker, chucvu} = nhanVien;
+        let {tknv, name, email, datepicker, chucvu} = newArrNhanVien;
 
         // <td>${nhanVien.tongLuong()}</td>
         // <td>${nhanVien.xepLoai()}</td>
@@ -100,8 +103,8 @@ function renderArrNhanVien (arr = arrNhanVien) {
             <td>${email}</td>
             <td>${datepicker}</td>
             <td>${chucvu}</td>
-            <td>${nhanVien.tongLuong()}</td>
-            <td>${nhanVien.xepLoai()}</td>
+            <td>${newArrNhanVien.tongLuong()}</td>
+            <td>${newArrNhanVien.xepLoai()}</td>
             <td>
             <button onclick="deleteNhanVien('${tknv}')" class="btn btn-danger">Xoá</button>
             <button
@@ -124,16 +127,18 @@ function renderArrNhanVien (arr = arrNhanVien) {
     //     document.getElementById("tableDanhSach").innerHTML = content;
     // }
     document.getElementById("tableDanhSach").innerHTML = content;
+    // getLocalStorage();
 }
 
 //  lưu ý
-renderArrNhanVien();
+// renderArrNhanVien();
 
 //  gọi tới hàm lấy dữ liệu từ localStorage
-// getLocalStorage(); 
+getLocalStorage(); 
+// getLocalStorage();
 
 
-
+// 
 //                  TEST
 // document.getElementById("tableDanhSach").innerHTML = content;
 // document.getElementById("tableDanhSach").innerHTML = "11111qeqeqeqeq111111111111";
@@ -151,7 +156,7 @@ renderArrNhanVien();
         // localStorage.removeItem  : xóa dữ liệu từ localStorage
 
 //  Lưu trữ dữ liệu xuống localStorage
-function saveLocalStorage (key="arrNhanVien", value="arrNhanVien") {
+function saveLocalStorage (key="arrNhanVien", value=arrNhanVien) {
     // Lấy trữ từ mang sang chuổi để lưu trữ
     // Đi đến sự kiện onsubmit để gọi function này
     let stringJson = JSON.stringify(value);
@@ -170,19 +175,22 @@ function getLocalStorage (key="arrNhanVien") {
         arrNhanVien = JSON.parse(arrLocal);
         // gọi đến hàm render
         renderArrNhanVien();
+        saveLocalStorage();
+        document.getElementById("formQLNV").reset();
+        // getValueForm().reset();
     }
 }
 
 
 //      Chức năng xóa
-function deleteNhanVien (tknv) {
+function deleteNhanVien (ftknv) {
     //      Tạo sự kiệ onclick tại nút button ở function render
-    console.log(tknv);
+    console.log(ftknv);
     // tìm vị trí của nhân viên đang cần xóa trong mảng
     //  Thực hiện cấc phương thúc xóa của măng
     //      Sử dụng findIndex
     let index = arrNhanVien.findIndex((item,index) => {
-        return item.tknv == tknv;
+        return item.tknv == ftknv;
     });
     console.log(index);
 
@@ -192,7 +200,8 @@ function deleteNhanVien (tknv) {
 
     // gọi đến render và saveLocal
     renderArrNhanVien();
-
+    // luu y
+    saveLocalStorage();
     };
 
 }  
@@ -257,6 +266,8 @@ function updateNhanVien () {
         arrNhanVien[index] = nhanVien;
         console.log(arrNhanVien);
         renderArrNhanVien(); 
+        saveLocalStorage();
+        document.getElementById("formQLNV").reset();
         alert("Cập nhật thành công");        
     };
 

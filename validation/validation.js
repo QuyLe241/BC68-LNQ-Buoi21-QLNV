@@ -10,5 +10,5 @@ function checkEmptyValue (value,errorField) {
     } else {
         errorField.innerHTML = "";
         return true;
-    }
-}
+    };
+};
