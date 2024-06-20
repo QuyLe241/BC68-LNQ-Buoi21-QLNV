@@ -53,10 +53,10 @@ document.getElementById("formQLNV").onsubmit = function (event) {
     // }
 
     // //  validation
-    //     let parent = field.parentElement; 
-    //     let errorField = parent.querySelector("span");
-    //     // console.log(errorField);
-    //     let check = checkEmptyValue(value, errorField);
+        // let parent = field.parentElement(); 
+        // let errorField = parent.querySelector("span");
+        // // console.log(errorField);
+        // let check = checkEmptyValue(value, errorField);
 
     // thêm nhân viên vào arr
     arrNhanVien.push(nhanVien);
@@ -138,7 +138,7 @@ getLocalStorage();
 // getLocalStorage();
 
 
-//      Lick thêm nhân viên
+//      Lick btn thêm nhân viên
 document.getElementById("btnThem").onclick = function() {
     document.getElementById("formQLNV").reset();
     document.getElementById("tknv").readOnly = false;
