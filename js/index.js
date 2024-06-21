@@ -24,6 +24,34 @@ function getValueForm () {
         // document.querySelector("span").innerHTML = "Không bỏ trống.";
         // console.log(errorField);
         let check = checkEmptyValue(value,errorField);
+
+        //      Kiểm tra số ký tự của TK
+        //      check true và = tknv thì tiếp tục kiểm tra đến số ký tự
+        //      
+        if (check && id == "tknv") {
+            checkMinMaxValue(value,errorField,4,6);
+        };
+
+        // check MK
+        if (check && id == "password") {
+            checkMinMaxPassword(value,errorField,6,10);
+        };
+
+        //      check email
+        if (check && id == "email") {
+            checkEmail(value,errorField);
+        };
+
+        //      check salary
+        if (check && id == "luongCB") {
+            checkSalary(value,1000000,20000000,errorField);
+        };
+
+        //      Kiểm tra số giờ làm
+        if (check && id == "gioLam") {
+            checkTime(value,80,200,errorField);
+        };
+
     };
     // let parent = field.parentElement;
     //     let errorField = parent.querySelector("span");
