@@ -19,11 +19,19 @@ function getValueForm () {
         //  Xử dụng thẻ cha chứa input để DOM và hiện thông báo
         //      Bằng parentElement
         //      field là từng input đang có
-        // let parent = field.parentElement; 
-        // let errorField = parent.querySelector("span");
-        // // console.log(errorField);
-        // let check = checkEmptyValue(value, errorField);
-    }
+        let parent = field.parentElement;
+        let errorField = parent.querySelector("span");
+        // document.querySelector("span").innerHTML = "Không bỏ trống.";
+        // console.log(errorField);
+        let check = checkEmptyValue(value,errorField);
+    };
+    // let parent = field.parentElement;
+    //     let errorField = parent.querySelector("span");
+    //     // document.querySelector("span").innerHTML = "Không bỏ trống.";
+    //     // console.log(errorField);
+    //     let check = checkEmptyValue(value,errorField);
+
+
     return nhanVien;
 }
 
