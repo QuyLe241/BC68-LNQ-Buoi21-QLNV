@@ -145,7 +145,7 @@ function renderArrNhanVien (arr = arrNhanVien) {
             <button onclick="deleteNhanVien('${tknv}')" class="btn btn-danger">Xoá</button>
             <button
                     onclick="getInforNhanVien('${tknv}')"
-                    class="btn btn-warning"
+                    class="btn btn-warning btnSua"
                     id="btnThem"
                     data-toggle="modal"
                     data-target="#myModal"
@@ -178,7 +178,18 @@ getLocalStorage();
 document.getElementById("btnThem").onclick = function() {
     document.getElementById("formQLNV").reset();
     document.getElementById("tknv").readOnly = false;
+    document.getElementById("btnThemNV").style.display = "block";
 };
+
+//      Sửa nhân viên --- Mất btn thêm
+document.querySelector(".btnSua").onclick = function () {
+    document.getElementById("btnThemNV").style.display = "none";
+};
+
+//      btnDong  reset form
+document.getElementById("btnDong").onclick = function () {
+    getValueForm.reset();
+}
 
 
 // 

@@ -24,11 +24,12 @@ function checkMinMaxValue(value,errorField,min,max) {
         return true;
     } else {
         errorField.innerHTML = `Số ký tự ${min} đến ${max}`;
+        getValueForm().reset();     //
         return false;
     };
 };
 
-//      Kiểm tra MK
+//      Kiểm tra password
 function checkMinMaxPassword(value,errorField,min,max) {
     if (min <= value.length && value.length <= max) {
         //      Đúng với dữ liệu quy định
@@ -36,6 +37,7 @@ function checkMinMaxPassword(value,errorField,min,max) {
         return true;
     } else {
         errorField.innerHTML = `Số ký tự ${min} đến ${max}`;
+        getValueForm().reset();     //
         return false;
     };
 };
@@ -52,7 +54,8 @@ function checkEmail (value,errorField) {
         return true;
     } else {
         errorField.innerHTML = "Nhập đúng định dạng mail.";
-        return false;
+        getValueForm().reset();     //
+        return false;       //
     };
 
 };
@@ -65,6 +68,7 @@ function checkSalary (value,min,max,errorField) {
         return true;
     } else {
         errorField.innerHTML = `Lương từ ${min} đến ${max}`;
+        getValueForm().reset();     // 
         return false;
     };
 };
@@ -81,3 +85,20 @@ function checkTime (value,min,max,errorField) {
         return false;
     };
 };
+
+//      Kiểm tra số điện thoại
+// function checkPhoneNumber (value,errorField) {
+//     //      regex +84
+//     //      /([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b/
+//     let regexPhone = /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/;
+//     let isValisd = regexPhone.test(value);
+//      if (isValisd) {
+//         //  SDT đúng
+//         errorField.innerHTML = "";
+//         return true;
+//      } else {
+//         errorField.innerHTML = "Nhập đúng Định dạng VN";
+//         return false;
+//      };
+// };
+
