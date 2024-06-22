@@ -179,11 +179,13 @@ getLocalStorage();
 function showBtnThem () {
     document.getElementById("btnThemNV").style.display = "block";
     document.getElementById("btnCapNhatNV").style.display = "none";
+    // document.getElementById("visibEdit").style.display = "none";
 
 };
 
 function showBtnSua () {
     document.getElementById("btnThemNV").style.display = "none";
+    // document.getElementById("visibUpdate").style.display = "none";
     document.getElementById("btnCapNhatNV").style.display = "block";
 
 };
@@ -276,7 +278,7 @@ function deleteNhanVien (ftknv) {
 
     //  Xóa , nếu vị trí index != -1
     if (index != -1) {
-        arrNhanVien.splice(index,1);
+        arrNhanVien.splice(index,1);    
 
     // gọi đến render và saveLocal
     renderArrNhanVien(); 

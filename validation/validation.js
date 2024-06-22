@@ -44,6 +44,27 @@ function checkMinMaxPassword(value,errorField,min,max) {
     };
 };
 
+//          check PassWord 2
+// function checkPassWord (value,errorField) {
+//     //                  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+//     let regexpassWord = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/;
+//     // sử dụng chuỗi regex để kiểm tra value
+//     let isValisd = regexpassWord.test(value);
+
+//     if (isValisd) {
+//         //      Đúng định dạng Pass
+//         errorField.innerHTML = "";
+//         return true;
+//     } else {
+//         // alert("Mật khẩu 6 đến 10 ký tự, ít nhất: 1 in hoa, 1 thường, 1 ký tự đặc biệt");
+//         errorField.innerHTML = "(6-10)Ít nhất:1 in hoa,1 thường,1 đặc biệt,1 số";
+//         getValueForm().reset();     //
+//         return false;       //
+//     };
+
+// };
+
+
 //      Kiểm tra email
 function checkEmail (value,errorField) {
     let regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

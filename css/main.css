@@ -21,12 +21,14 @@
 	background-color: transparent;       
 }
 
-/* .btnAdd {
-  display: none;
+.btnAdd {
+  /* display: none; */
+  display: block;
 
 }
 
 .btnUpdate {
-  display: none;
+  /* display: none; */
+  display: block;
 
-} */
+}
