@@ -30,6 +30,8 @@ function checkMinMaxValue(value,errorField,min,max) {
 };
 
 //      Kiểm tra password
+//      regex password
+//          /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/
 function checkMinMaxPassword(value,errorField,min,max) {
     if (min <= value.length && value.length <= max) {
         //      Đúng với dữ liệu quy định

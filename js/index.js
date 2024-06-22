@@ -179,11 +179,13 @@ document.getElementById("btnThem").onclick = function() {
     document.getElementById("formQLNV").reset();
     document.getElementById("tknv").readOnly = false;
     document.getElementById("btnThemNV").style.display = "block";
+    document.getElementById("btnCapNhatNV").style.display = "none";
 };
 
 //      Sửa nhân viên --- Mất btn thêm
 document.querySelector(".btnSua").onclick = function () {
     document.getElementById("btnThemNV").style.display = "none";
+    document.getElementById("btnCapNhatNV").style.display = "block";
 };
 
 //      btnDong  reset form
