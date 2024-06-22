@@ -174,24 +174,48 @@ getLocalStorage();
 // getLocalStorage();
 
 
+
+//      hàm edit
+function showBtnThem () {
+    document.getElementById("btnThemNV").style.display = "block";
+    document.getElementById("btnCapNhatNV").style.display = "none";
+
+};
+
+function showBtnSua () {
+    document.getElementById("btnThemNV").style.display = "none";
+    document.getElementById("btnCapNhatNV").style.display = "block";
+
+};
+
 //      Lick btn thêm nhân viên
 document.getElementById("btnThem").onclick = function() {
     document.getElementById("formQLNV").reset();
     document.getElementById("tknv").readOnly = false;
-    document.getElementById("btnThemNV").style.display = "block";
-    document.getElementById("btnCapNhatNV").style.display = "none";
+    showBtnThem();
+    // document.getElementById("btnThemNV").style.display = "block";
+    // document.getElementById("btnCapNhatNV").style.display = "none";
+
+    // 
+    // let checkBtn = document.getElementById("btnCapNhatNV");
+    // if (checkBtn) {
+
+    // }
 };
 
-//      Sửa nhân viên --- Mất btn thêm
-document.querySelector(".btnSua").onclick = function () {
-    document.getElementById("btnThemNV").style.display = "none";
-    document.getElementById("btnCapNhatNV").style.display = "block";
+//      Btn-Sua  Sửa nhân viên --- Mất btn thêm
+document.getElementById("btnSuaNV").onclick = function () {
+    // document.getElementById("btnThemNV").style.display = "none";
+    // document.getElementById("btnCapNhatNV").style.display = "block";
+    showBtnSua();
 };
 
 //      btnDong  reset form
 document.getElementById("btnDong").onclick = function () {
     getValueForm.reset();
-}
+    // document.getElementById("btnCapNhatNV").style.display = "none";
+    // document.getElementById("btnThemNV").style.display = "none";
+};
 
 
 // 
@@ -323,7 +347,7 @@ function updateNhanVien () {
         console.log(arrNhanVien);
         renderArrNhanVien(); 
         saveLocalStorage();
-        document.getElementById("formQLNV").reset();
+        document.getElementById("formQLNV").reset(); 
         alert("Cập nhật thành công");        
     };
 
