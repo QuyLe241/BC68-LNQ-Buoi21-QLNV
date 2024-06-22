@@ -146,7 +146,7 @@ function renderArrNhanVien (arr = arrNhanVien) {
             <button
                     onclick="getInforNhanVien('${tknv}')"
                     class="btn btn-warning btnSua"
-                    id="btnThem"
+                    id="btnSuaNV"
                     data-toggle="modal"
                     data-target="#myModal"
                   >
