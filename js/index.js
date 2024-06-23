@@ -134,6 +134,7 @@ function renderArrNhanVien (arr = arrNhanVien) {
         // <td>${nhanVien.xepLoai()}</td>
         // data-toggle="modal"
         // data-target="#myModal"
+        // onclick=""
         content += `
         <tr>
             <td>${tknv}</td>
@@ -150,6 +151,7 @@ function renderArrNhanVien (arr = arrNhanVien) {
                     class="btn btn-warning btnSua"
                     id="btnSuaNV"
                     data-toggle="modal"
+                    data-target="#myModal"
                     
                   >
                     Sửa
@@ -216,6 +218,8 @@ document.getElementById("btnThem").onclick = function() {
 
 //      show modal
 document.getElementById("btnSuaNV").onclick = function () {
+    // getInforNhanVien(`${tknv}`);
+    // getInforNhanVien('${tknv}')
     document.querySelector("body").classList.add("modal-open");
     document.querySelector("body").style.display = "block";
     document.getElementById("myModal").classList.add("show");
@@ -223,6 +227,7 @@ document.getElementById("btnSuaNV").onclick = function () {
     document.getElementById("myModal").ariaHidden = "false";
     // document.querySelector("body").style.paddingRight = "17px";
     showBtnSua();
+    console.log("click");
 };
 
 //      btn Dong
