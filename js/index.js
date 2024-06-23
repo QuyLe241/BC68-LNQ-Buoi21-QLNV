@@ -132,6 +132,8 @@ function renderArrNhanVien (arr = arrNhanVien) {
 
         // <td>${nhanVien.tongLuong()}</td>
         // <td>${nhanVien.xepLoai()}</td>
+        // data-toggle="modal"
+        // data-target="#myModal"
         content += `
         <tr>
             <td>${tknv}</td>
@@ -148,7 +150,7 @@ function renderArrNhanVien (arr = arrNhanVien) {
                     class="btn btn-warning btnSua"
                     id="btnSuaNV"
                     data-toggle="modal"
-                    data-target="#myModal"
+                    
                   >
                     Sửa
                   </button>
@@ -260,7 +262,7 @@ function saveLocalStorage (key="arrNhanVien", value=arrNhanVien) {
     // Đi đến sự kiện onsubmit để gọi function này
     let stringJson = JSON.stringify(value);
     localStorage.setItem(key, stringJson);
-}
+};
 
 function getLocalStorage (key="arrNhanVien") {
     //  đi đến renderArrNhanVien để gọi và hiển thị
@@ -277,8 +279,8 @@ function getLocalStorage (key="arrNhanVien") {
         saveLocalStorage();
         document.getElementById("formQLNV").reset();
         // getValueForm().reset();
-    }
-}
+    };
+};
 
 
 //      Chức năng xóa
