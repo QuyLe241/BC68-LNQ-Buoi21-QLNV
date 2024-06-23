@@ -206,17 +206,34 @@ document.getElementById("btnThem").onclick = function() {
 };
 
 //      Btn-Sua  Sửa nhân viên --- Mất btn thêm
+// document.getElementById("btnSuaNV").onclick = function () {
+//     // document.getElementById("btnThemNV").style.display = "none";
+//     // document.getElementById("btnCapNhatNV").style.display = "block";
+//     showBtnSua();
+// };
+
+//      show modal
 document.getElementById("btnSuaNV").onclick = function () {
-    // document.getElementById("btnThemNV").style.display = "none";
-    // document.getElementById("btnCapNhatNV").style.display = "block";
+    document.querySelector("body").classList.add("modal-open");
+    document.querySelector("body").style.display = "block";
+    document.getElementById("myModal").classList.add("show");
+    document.getElementById("myModal").style.display = "block";
+    document.getElementById("myModal").ariaHidden = "false";
+    // document.querySelector("body").style.paddingRight = "17px";
     showBtnSua();
 };
 
+//      btn Dong
 //      btnDong  reset form
 document.getElementById("btnDong").onclick = function () {
-    getValueForm.reset();
+    // getValueForm.reset();
     // document.getElementById("btnCapNhatNV").style.display = "none";
     // document.getElementById("btnThemNV").style.display = "none";
+    document.querySelector("body").classList.remove("modal-open");
+    // document.querySelector("body").style.display = "none";
+    document.getElementById("myModal").classList.remove("show");
+    document.getElementById("myModal").style.display = "none";
+    document.getElementById("myModal").ariaHidden = "true";
 };
 
 
